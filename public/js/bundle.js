@@ -70,7 +70,21 @@
 		console.log('init()');
 		var dummyDate = new Date();
 		var res = [{
+			id: 0,
 			author: "Nibrok Yread",
+			body: "My name is not Korbin Deary.",
+			likes: ["Nibrok Yread"],
+			postDate: dummyDate.toISOString(),
+			avatar: "asdjifnaudgnsdfing",
+			comments: [{
+				author: "Nibrok Yread",
+				body: "Yes, this is true.",
+				date: dummyDate.toISOString(),
+				likes: ["Nibrok Yread"]
+			}]
+		}, {
+			id: 1,
+			author: "Neb Aynuj",
 			body: "My name is not Korbin Deary.",
 			likes: ["Nibrok Yread"],
 			postDate: dummyDate.toISOString(),
@@ -30546,7 +30560,11 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _Timeline = __webpack_require__(509);
+	var _PostForm = __webpack_require__(509);
+
+	var _PostForm2 = _interopRequireDefault(_PostForm);
+
+	var _Timeline = __webpack_require__(510);
 
 	var _Timeline2 = _interopRequireDefault(_Timeline);
 
@@ -30557,8 +30575,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	// import CreatePosts from "./createPosts";
-
 
 	var App = function (_React$Component) {
 		_inherits(App, _React$Component);
@@ -30584,8 +30600,42 @@
 				console.log('app.jsx render()');
 				return _react2.default.createElement(
 					"div",
-					{ className: "main-div" },
-					_react2.default.createElement(_Timeline2.default, { posts: this.props.posts })
+					{ className: "wrapper" },
+					_react2.default.createElement(
+						"div",
+						{ className: "box" },
+						_react2.default.createElement(
+							"div",
+							{ className: "row row-offcanvas row-offcanvas-left" },
+							_react2.default.createElement(
+								"div",
+								{ className: "column col-sm-10 col-xs-11", id: "main" },
+								_react2.default.createElement(
+									"h1",
+									null,
+									"Blarb!"
+								),
+								_react2.default.createElement(
+									"div",
+									{ className: "padding" },
+									_react2.default.createElement(
+										"div",
+										{ className: "full col-sm-9" },
+										_react2.default.createElement(
+											"div",
+											{ className: "row" },
+											_react2.default.createElement(
+												"div",
+												{ className: "col-sm-5 main-well" },
+												_react2.default.createElement(_PostForm2.default, null),
+												_react2.default.createElement(_Timeline2.default, { key: 1, posts: this.props.posts })
+											)
+										)
+									)
+								)
+							)
+						)
+					)
 				);
 			}
 		}, {
@@ -34018,6 +34068,100 @@
 /* 509 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(298);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var PostForm = function (_React$Component) {
+		_inherits(PostForm, _React$Component);
+
+		function PostForm(props) {
+			_classCallCheck(this, PostForm);
+
+			var _this = _possibleConstructorReturn(this, (PostForm.__proto__ || Object.getPrototypeOf(PostForm)).call(this, props));
+
+			_this.state = {
+				authorInput: "",
+				bodyInput: ""
+			};
+
+			_this.handleAuthorChange = _this.handleAuthorChange.bind(_this);
+			_this.handleBodyChange = _this.handleBodyChange.bind(_this);
+			_this.handleSubmit = _this.handleSubmit.bind(_this);
+			return _this;
+		}
+
+		_createClass(PostForm, [{
+			key: "handleAuthorChange",
+			value: function handleAuthorChange(event) {
+				this.setState({
+					authorInput: event.target.value
+				});
+			}
+		}, {
+			key: "handleBodyChange",
+			value: function handleBodyChange(event) {
+				this.setState({
+					bodyInput: event.target.value
+				});
+			}
+		}, {
+			key: "handleSubmit",
+			value: function handleSubmit(event) {
+				alert('A name was submitted: ' + this.state.value);
+				event.preventDefault();
+			}
+		}, {
+			key: "render",
+			value: function render() {
+				return _react2.default.createElement(
+					"div",
+					{ className: "well" },
+					_react2.default.createElement(
+						"form",
+						{ className: "form-horizontal", role: "form", onSubmit: this.handleSubmit },
+						_react2.default.createElement("input", { type: "text", placeholder: "Author:", className: "form-control", onChange: this.handleAuthorChange, value: this.state.authorInput }),
+						_react2.default.createElement("br", null),
+						_react2.default.createElement(
+							"div",
+							{ className: "form-group form-body" },
+							_react2.default.createElement("textarea", { placeholder: "Say Something Here", className: "form-control", onChange: this.handleBodyChange, value: this.state.bodyInput }),
+							_react2.default.createElement(
+								"button",
+								{ className: "btn btn-primary pull-right", onClick: this.handleSubmit },
+								"Post"
+							)
+						)
+					)
+				);
+			}
+		}]);
+
+		return PostForm;
+	}(_react2.default.Component);
+
+	exports.default = PostForm;
+
+/***/ }),
+/* 510 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -34036,7 +34180,7 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _Post = __webpack_require__(510);
+	var _Post = __webpack_require__(511);
 
 	var _Post2 = _interopRequireDefault(_Post);
 
@@ -34093,10 +34237,10 @@
 	exports.default = Timeline;
 
 /***/ }),
-/* 510 */
+/* 511 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -34118,70 +34262,50 @@
 		    comments = _ref.comments;
 
 		return _react2.default.createElement(
-			'div',
-			null,
+			"div",
+			{ className: "panel panel-default" },
 			_react2.default.createElement(
-				'p',
-				null,
-				'Author: ',
-				author
+				"div",
+				{ className: "panel-heading" },
+				_react2.default.createElement(
+					"h3",
+					{ className: "panel-title" },
+					author
+				)
 			),
 			_react2.default.createElement(
-				'p',
-				null,
-				'Body ',
+				"div",
+				{ className: "panel-body" },
 				body
 			),
 			_react2.default.createElement(
-				'p',
-				null,
-				'likes ',
-				likes.length
-			),
-			_react2.default.createElement(
-				'p',
-				null,
-				'Date: ',
-				postDate
-			),
-			_react2.default.createElement(
-				'p',
-				null,
-				'Avatar: ',
-				avatar
-			),
-			comments.map(function (_ref2) {
-				var author = _ref2.author,
-				    body = _ref2.body,
-				    date = _ref2.date,
-				    likes = _ref2.likes,
-				    id = _ref2.id;
-				return _react2.default.createElement(
-					'div',
-					{ key: id },
-					_react2.default.createElement(
-						'p',
-						null,
-						author
-					),
-					_react2.default.createElement(
-						'p',
-						null,
-						body
-					),
-					_react2.default.createElement(
-						'p',
-						null,
-						date
-					),
-					_react2.default.createElement(
-						'p',
-						null,
-						likes.length
-					)
-				);
-			})
-		);
+				"div",
+				{ className: "panel-footer" },
+				postDate,
+				" | ",
+				likes.length,
+				" ",
+				_react2.default.createElement("span", { className: "glyphicon glyphicon-thumbs-up", "aria-hidden": "true" })
+			)
+		)
+		/*
+	 <div>
+	 	<p>Author: {author}</p>
+	 	<p>Body {body}</p>
+	 	<p>likes {likes.length}</p>
+	 	<p>Date: {postDate}</p>
+	 	<p>Avatar: {avatar}</p>
+	 	<button>Like!</button>
+	 	{comments.map( ({author, body, date, likes, id}) => (
+	 		<div key={id}>
+	 			<p>{author}</p>
+	 			<p>{body}</p>
+	 			<p>{date}</p>
+	 			<p>{likes.length}</p>
+	 		</div>
+	 	))}
+	 </div>*/
+		;
 	}
 
 /***/ })

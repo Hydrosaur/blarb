@@ -32,6 +32,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/post', posts);
+app.use('/public/css/fonts', express.static(path.join(__dirname, 'fonts')));
 
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

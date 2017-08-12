@@ -165,28 +165,31 @@ h1,h2,h3 {
 	background-color: #fff;
 }
 
-.btn-primary,.label-primary,.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus  {
+.btn-primary,.label-primary,.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
 	background-color:#3B5999;
-    color:#fffffe;
+  color:#fffffe;
 }
 .btn-default {
-    color:#666666;
-    text-shadow:0 0 1px rgba(0,0,0,.3);
+  color:#666666;
+  text-shadow:0 0 1px rgba(0,0,0,.3);
 }
 .form-control {
 	
 }
 
-.panel textarea, .well textarea, textarea.form-control
-{
+.form-body {
+  padding-left: 1.5%;
+}
+
+.panel textarea, .well textarea, textarea.form-control{
    resize: none;
 }
   
-.badge{
+.badge {
    color:#3B5999;
    background-color:#fff;
 }
-.badge:hover, .badge-inverse{
+.badge:hover, .badge-inverse {
    background-color:#3B5999;
    color:#fff;
 }

@@ -9,6 +9,7 @@ function init() {
 	const dummyDate = new Date();
 	const res = [
 		{
+			id: 0,
 			author: "Nibrok Yread",
 			body: "My name is not Korbin Deary.",
 			likes: ["Nibrok Yread"],
@@ -22,8 +23,9 @@ function init() {
 					likes: ["Nibrok Yread"]
 				}
 			]
-		}
+		},
 		{
+			id: 1,
 			author: "Neb Aynuj",
 			body: "My name is not Korbin Deary.",
 			likes: ["Nibrok Yread"],
